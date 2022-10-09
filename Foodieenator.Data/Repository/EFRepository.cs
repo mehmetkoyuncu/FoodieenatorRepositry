@@ -23,7 +23,7 @@ namespace Foodieenator.Data.Repository
 
             _context = context;
             _dbset = context.Set<TEntity>();
-            _dbset.AsNoTracking();
+
         }
         public void Add(TEntity entity)
         {

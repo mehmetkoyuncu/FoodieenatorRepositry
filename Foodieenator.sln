@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodieenator.Entities", "Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodieenator.Service", "Foodieenator.Service\Foodieenator.Service.csproj", "{1F9BC8E8-E639-4567-B9CB-00BFD8D943F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodieenator.UI", "Foodieenator.UI\Foodieenator.UI.csproj", "{51684EB3-244F-4531-B0E9-817F26ED421C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1F9BC8E8-E639-4567-B9CB-00BFD8D943F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F9BC8E8-E639-4567-B9CB-00BFD8D943F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F9BC8E8-E639-4567-B9CB-00BFD8D943F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51684EB3-244F-4531-B0E9-817F26ED421C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51684EB3-244F-4531-B0E9-817F26ED421C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51684EB3-244F-4531-B0E9-817F26ED421C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51684EB3-244F-4531-B0E9-817F26ED421C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

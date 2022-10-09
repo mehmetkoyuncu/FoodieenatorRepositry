@@ -24,7 +24,7 @@ namespace Foodieenator.Service.Concrete
                 _uow.GetRepository<FoodCategory>().Add(entity);
             else
             {
-                foodCategory.Name = foodCategory.Name;
+                foodCategory.Name = entity.Name;
                 _uow.GetRepository<FoodCategory>().Update(foodCategory);
             }
 

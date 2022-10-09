@@ -16,8 +16,10 @@ namespace Foodieenator.Entities.Entities
         public string Image { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public string Description { get; set; }
         public virtual int FoodCategoryId { get; set; }
         public FoodCategory FoodCategory { get; set; }
+        public bool IsPublish { get; set; }
         public ICollection<DiscountedFood> DiscountedFoods { get; set; }
     }
 }

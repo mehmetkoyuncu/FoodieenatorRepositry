@@ -42,15 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IService.cs" />
-    <Compile Include="Concrete\AboutPageService.cs" />
-    <Compile Include="Concrete\ContactInformationService.cs" />
     <Compile Include="Concrete\DiscountedFoodService.cs" />
     <Compile Include="Concrete\FoodCategoryService.cs" />
     <Compile Include="Concrete\FoodService.cs" />
     <Compile Include="Concrete\IndexPageService.cs" />
-    <Compile Include="Concrete\ProjectSettingsService.cs" />
     <Compile Include="Concrete\ReservationService.cs" />
-    <Compile Include="Concrete\SocialMediaService.cs" />
+    <Compile Include="Concrete\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +59,9 @@
       <Project>{F45EF260-8CE4-4EC0-9FC4-846EDC080798}</Project>
       <Name>Foodieenator.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "RenderReservationPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <!-- book section -->
+    <section class="book_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2>
+                    Book A Table
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form_container">
+                        @using (Html.BeginForm("AddReservation", "Home", FormMethod.Post))
+                        {
+                            <div>
+                                <input name="Name" type="text" class="form-control" placeholder="İsim Soyisim" />
+                            </div>
+                            <div>
+                                <input name="Phone" type="text" class="form-control" placeholder="Telefon Numarası" />
+                            </div>
+                            <div>
+                                <input name="Mail" type="email" class="form-control" placeholder="Mail Adresi" />
+                            </div>
+                            <div>
+                                <div>
+                                    <input name="PersonCount" type="number" class="form-control" placeholder="Kişi Sayısı" />
+                                </div>
+                            </div>
+                            <div>
+                                <input type="date" name="ReservationDate" class="form-control">
+                            </div>
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="text-light">
+                                    <b>@ViewBag.Message</b>
+                                </div>
+                            }
+
+                            <div class="btn_box">
+                                <button type="submit">
+                                    Rezervasyon Yap
+                                </button>
+                            </div>
+                        }
+                        </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="map_container ">
+                        <div id="googleMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

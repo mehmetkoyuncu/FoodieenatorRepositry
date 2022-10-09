@@ -36,7 +36,7 @@ namespace Foodieenator.Service.Concrete
                 _uow.GetRepository<Reservation>().Update(reservation);
             }
 
-            _uow.SaveChanges();
+           var a= _uow.SaveChanges();
         }
 
         public List<Reservation> GetAll()

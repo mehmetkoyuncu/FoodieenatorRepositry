@@ -1,0 +1,194 @@
+﻿
+
+<style>
+    .main_div {
+        padding: 30px;
+    }
+
+    #input1,
+    #textarea1 {
+        background: none;
+        color: black !important;
+        font-size: 18px;
+        padding: 10px 10px 10px 15px;
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        border: 1px solid #c6c6c6;
+    }
+
+        #input1:hover {
+            border: 2px solid #e91e63;
+        }
+
+        #input1:focus,
+        textarea:focus {
+            outline: none;
+            border: 2px solid #e91e63;
+        }
+
+            #input1:focus ~ label, input:valid ~ label,
+            textarea:focus ~ label,
+            textarea:valid ~ label {
+                top: -5px;
+                font-size: 12px;
+                color: #000;
+                left: 11px;
+            }
+
+            #input1:focus ~ .bar:before,
+            textarea:focus ~ .bar:before {
+            }
+
+    input[type="password"] {
+        letter-spacing: 0.3em;
+    }
+
+    .group {
+        position: relative;
+    }
+
+    label {
+        color: #c6c6c6;
+        font-size: 16px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 15px;
+        top: 12px;
+        transition: 300ms ease all;
+        background-color: #fff;
+        padding: 0 2px;
+    }
+</style>
+
+
+@{
+    ViewBag.Title = "RenderFoodCategory";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+@using Foodieenator.Entities.Entities;
+@model List<FoodCategory>
+<div class="row">
+    <div class="col-12">
+        <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <div class="text-white text-capitalize ps-3">
+                        Yiyecek Kategorileri
+                        <a data-bs-toggle="modal" style="cursor:pointer;" data-bs-target="#foodCategoryModal"> <span style="float:right; margin-right:30px; color:white;"><i class="fa-solid fa-square-plus"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori İsmi</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="align-middle" style="padding-left:2rem">
+                                        <span class="text-secondary text-xs font-weight-bold">@item.Name</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <a data-bs-toggle="modal" onclick="Edit(@item.Id)" data-bs-target="#foodCategoryModalEdit" class="btn btn-info text-center" font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="/DashBoard/RemoveFoodCategory?Id=@item.Id" class=" btn btn-primary text-center" font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="foodCategoryModal" tabindex="-1" aria-labelledby="foodCategoryModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="foodCategoryModalLabel">Ekle</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddFoodCategory", "DashBoard", FormMethod.Post))
+            {
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="usr">Kategori Adı:</label>
+                        <input name="Name" style="margin-top:25px!important" id="input1">
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="foodCategoryModalEdit" tabindex="-1" aria-labelledby="foodCategoryModalEdit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="foodCategoryModalEditLabel">Düzenle</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddFoodCategory", "DashBoard", FormMethod.Post))
+            {
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="usr">Kategori Adı:</label>
+                        <input name="Name" class="categoryName" style="margin-top:25px!important" id="input1">
+                        <input type="hidden" id="editModal1" name="Id" />
+                        
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary">Düzenle</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function Edit(id) {
+        $('#editModal1').val(id)
+                debugger;
+        var model = @Html.Raw(Json.Encode(Model));
+        /*        var object1 = JSON.parse(model);*/
+        debugger;
+        var result = model.filter(x => x.Id == id)[0];
+        $(".categoryName").attr("value", result.Name);
+    }
+</script>

@@ -30,6 +30,7 @@ namespace Foodieenator.Service.Concrete
                 food.Name = entity.Name;
                 food.Price = entity.Price;
                 food.FoodCategoryId = entity.FoodCategoryId;
+                food.Description = entity.Description;
                 _uow.GetRepository<Food>().Update(food);
             }
 
