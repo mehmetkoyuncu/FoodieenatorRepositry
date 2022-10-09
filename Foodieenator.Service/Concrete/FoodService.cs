@@ -10,50 +10,54 @@ using System.Threading.Tasks;
 
 namespace Foodieenator.Service.Concrete
 {
-  
-    public class FoodService:IService<Food>
-    {
-        IUnitOfWork _uow;
-        public FoodService()
-        {
-            _uow = new EFUnitOfWork(new EfContext());
-        }
 
-        public void AddOrUpdate(Food entity)
-        {
-            var food = GetById(entity.Id);
-            if (food == null)
-                _uow.GetRepository<Food>().Add(entity);
-            else
-            {
-                food.Image = entity.Image;
-                food.Name = entity.Name;
-                food.Price = entity.Price;
-                food.FoodCategoryId = entity.FoodCategoryId;
-                food.Description = entity.Description;
-                _uow.GetRepository<Food>().Update(food);
-            }
+	public class FoodService : IService<Food>
+	{
+		IUnitOfWork _uow;
+		public FoodService()
+		{
+			_uow = new EFUnitOfWork(new EfContext());
+		}
 
-            _uow.SaveChanges();
-        }
+		public void AddOrUpdate(Food entity)
+		{
+			var food = GetById(entity.Id);
+			if (food == null)
+				_uow.GetRepository<Food>().Add(entity);
+			else
+			{
+				if (string.IsNullOrEmpty(entity.Image) == false)
+				{
+					food.Image = entity.Image;
+				}
+				food.Name = entity.Name;
+				food.Price = entity.Price;
+				food.FoodCategoryId = entity.FoodCategoryId;
+				food.Description = entity.Description;
+				food.IsPublish = entity.IsPublish;
+				_uow.GetRepository<Food>().Update(food);
+			}
 
-        public List<Food> GetAll()
-        {
-            List<Food> foods = _uow.GetRepository<Food>().GetAll();
-            return foods;
-        }
+			_uow.SaveChanges();
+		}
 
-        public Food GetById(int id)
-        {
-            Food food = _uow.GetRepository<Food>().Get(x => x.Id == id).FirstOrDefault();
-            return food;
-        }
+		public List<Food> GetAll()
+		{
+			List<Food> foods = _uow.GetRepository<Food>().GetAll();
+			return foods;
+		}
 
-        public void HardDelete(Food entity)
-        {
-            var food = GetById(entity.Id);
-            _uow.GetRepository<Food>().HardDelete(food);
-            _uow.SaveChanges();
-        }
-    }
+		public Food GetById(int id)
+		{
+			Food food = _uow.GetRepository<Food>().Get(x => x.Id == id).FirstOrDefault();
+			return food;
+		}
+
+		public void HardDelete(Food entity)
+		{
+			var food = GetById(entity.Id);
+			_uow.GetRepository<Food>().HardDelete(food);
+			_uow.SaveChanges();
+		}
+	}
 }

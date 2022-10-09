@@ -10,7 +10,7 @@ namespace Foodieenator.Data.Context
 {
     public class EfContext:DbContext
     {
-        public EfContext() : base("Data Source=TCBLGADMCONS023;Initial Catalog=FoodieenatorConnectionString;Integrated Security=true")
+        public EfContext() : base("Data Source=.;Initial Catalog=FoodieenatorConnectionString;Integrated Security=true")
         {
             this.Configuration.LazyLoadingEnabled = true;
         }
